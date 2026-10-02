@@ -461,3 +461,183 @@
     transition:none!important;
   }
 }
+
+
+/* =========================================================
+   Mobile QA corrections — carousel stability and C3 density
+   ========================================================= */
+
+/* Nested count spans must inherit the large metric typography on desktop too. */
+.tech-home .showcase-proof strong .desktop-count,
+.tech-home .showcase-proof strong .mobile-count{
+  font-size:inherit;
+  line-height:1;
+  color:inherit;
+  max-width:none;
+  font-weight:inherit;
+}
+
+/* C3 footer is deliberately full-bleed on desktop. */
+.c3-refresh .demo-footer{
+  max-width:none;
+  width:100%;
+  padding-left:max(28px,calc((100vw - 1180px)/2 + 28px));
+  padding-right:max(28px,calc((100vw - 1180px)/2 + 28px));
+}
+
+/* C2 mobile conveyor: native vertical page scroll + deliberate horizontal dragging. */
+@media(max-width:650px){
+  .c2-conveyor-interactive{
+    touch-action:pan-y;
+    cursor:grab;
+    user-select:none;
+  }
+  .c2-conveyor-interactive.is-dragging{
+    cursor:grabbing;
+  }
+  .c2-conveyor-interactive .c2-conveyor{
+    will-change:transform;
+  }
+
+  /* Restore a stable coverflow: cards never depend on reveal visibility. */
+  .tech-home .fan-card.is-active{
+    transform:translateY(-8px) rotateY(0deg) rotateZ(0deg) scale(1);
+    opacity:1;
+    box-shadow:0 34px 72px rgba(39,107,153,.18);
+    border-color:#67bfe8;
+  }
+  .tech-home .fan-card.is-before{
+    transform:translateY(18px) rotateY(9deg) rotateZ(-1.2deg) scale(.945);
+    transform-origin:right bottom;
+    opacity:.82;
+  }
+  .tech-home .fan-card.is-after{
+    transform:translateY(18px) rotateY(-9deg) rotateZ(1.2deg) scale(.945);
+    transform-origin:left bottom;
+    opacity:.82;
+  }
+
+  .tech-home .showcase-proof{
+    margin-top:8px;
+  }
+  .tech-home .showcase-proof article{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    align-items:center;
+    gap:14px;
+    padding:22px 20px;
+  }
+  .tech-home .showcase-proof strong{
+    font-size:42px;
+    line-height:1;
+    color:#087fc0;
+  }
+  .tech-home .showcase-proof article>span:last-child{
+    max-width:none;
+    font-size:14px;
+    line-height:1.42;
+  }
+
+  /* R1: no clipping / no artificial wrapper panel around the swipe rail. */
+  .t-r1 #projects{
+    overflow:visible!important;
+    background:transparent!important;
+  }
+  .t-r1 .r1-triptych{
+    overflow-x:auto!important;
+    overflow-y:visible!important;
+    background:transparent!important;
+    clip-path:none!important;
+  }
+
+  /* R3: tighten the handoff from the quote form into service selection. */
+  .t-r3 .r3-hero{
+    padding-bottom:22px!important;
+  }
+  .t-r3 .r3-service-map{
+    padding-top:30px!important;
+  }
+
+  /* C3: unify the first carousel visually — context changes, brand system doesn't. */
+  .c3-refresh .c3-segment-card,
+  .c3-refresh .c3-segment-card:nth-child(2),
+  .c3-refresh .c3-segment-card:nth-child(3){
+    background:linear-gradient(145deg,#ffffff,#f3fbff)!important;
+  }
+
+  /* Group the four proof metrics into one compact 2×2 information module. */
+  .c3-refresh .c3-proof-ribbon{
+    grid-template-columns:1fr 1fr!important;
+    gap:0!important;
+    margin:8px 14px 28px!important;
+    border:1px solid #d1e4ed!important;
+    border-radius:22px!important;
+    overflow:hidden!important;
+    background:#fff!important;
+    box-shadow:0 18px 46px rgba(37,102,138,.09)!important;
+  }
+  .c3-refresh .c3-proof-ribbon>div,
+  .c3-refresh .c3-proof-ribbon>div:nth-child(1),
+  .c3-refresh .c3-proof-ribbon>div:nth-child(4){
+    transform:none!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:transparent!important;
+    padding:18px 16px!important;
+  }
+  .c3-refresh .c3-proof-ribbon>div:nth-child(odd){
+    border-right:1px solid #dceaf0!important;
+  }
+  .c3-refresh .c3-proof-ribbon>div:nth-child(-n+2){
+    border-bottom:1px solid #dceaf0!important;
+  }
+  .c3-refresh .c3-proof-ribbon strong{
+    font-size:24px;
+  }
+  .c3-refresh .c3-proof-ribbon span{
+    display:block;
+    margin-top:4px;
+    font-size:10px;
+    line-height:1.35;
+  }
+
+  /* Give the mobile technical form its width back. */
+  .c3-refresh .c3-contact-v2{
+    margin:48px 10px;
+    padding:18px;
+    border-radius:24px;
+  }
+  .c3-refresh .c3-form-shell{
+    padding:9px;
+    border-radius:18px;
+  }
+  .c3-refresh .c3-form-shell .lead-form{
+    padding:16px 12px;
+    border-radius:15px;
+  }
+  .c3-refresh .c3-form-shell .field-grid{
+    grid-template-columns:1fr!important;
+    gap:14px;
+  }
+  .c3-refresh .c3-form-shell .field-grid .wide{
+    grid-column:auto;
+  }
+  .c3-refresh .c3-form-shell .field-grid label span{
+    font-size:11px;
+  }
+  .c3-refresh .c3-form-shell input,
+  .c3-refresh .c3-form-shell select{
+    min-height:50px;
+    padding:13px 12px;
+    font-size:16px;
+  }
+  .c3-refresh .c3-form-top{
+    padding:7px 7px 12px;
+  }
+
+  .c3-refresh .demo-footer{
+    padding-left:18px;
+    padding-right:18px;
+  }
+}
