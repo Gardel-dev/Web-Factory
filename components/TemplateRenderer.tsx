@@ -171,10 +171,18 @@ function R3({ p }: { p: Prospect }) {
   return (
     <main className="demo t-r3">
       <div className="ticker"><span>REFORMA · PRESUPUESTO · CÓRDOBA · REFORMA · PRESUPUESTO · CÓRDOBA</span></div>
-      <nav data-reveal><b>{p.shortName}</b><a className="nav-cta" href={"tel:" + p.phoneHref}>☎ {p.phone}</a></nav>
-      <section className="r3-hero"><div data-reveal><div className="status-dot">● PRESUPUESTOS ABIERTOS</div><h1>{p.hero}<br/><mark>{p.heroAccent}</mark></h1><p>{p.subhero}</p><div className="metric-row"><b>{p.rating}</b><span>{p.reviews}</span><span>Sin compromiso</span></div></div><div className="wizard-shell" data-reveal><div className="wizard-top"><span>PASO 1 DE 3</span><b>Tu proyecto</b></div><DemoForm prospect={p} compact/></div></section>
-      <section className="service-strip">{p.services.map((x,i)=><div key={x} data-reveal><b>0{i+1}</b><span>{x}</span><i>→</i></div>)}</section>
-      <section className="section"><header className="section-head" data-reveal><p>PRIMERO INTENCIÓN. DESPUÉS DETALLE.</p><h2>Tres proyectos, tres puertas de entrada.</h2></header><R3Cases p={p}/></section>
+      <nav className="r3-nav" data-reveal>
+        <b>{p.shortName}</b>
+        <div className="r3-nav-links">
+          <a href="#services">Servicios</a>
+          <a href="#cases">Casos</a>
+          <a href="#quote">Presupuesto</a>
+        </div>
+        <a className="nav-cta" href={"tel:" + p.phoneHref}>☎ {p.phone}</a>
+      </nav>
+      <section className="r3-hero"><div data-reveal><div className="status-dot">● PRESUPUESTOS ABIERTOS</div><h1>{p.hero}<br/><mark>{p.heroAccent}</mark></h1><p>{p.subhero}</p><div className="metric-row"><b>{p.rating}</b><span>{p.reviews}</span><span>Sin compromiso</span></div></div><div id="quote" className="wizard-shell" data-reveal><div className="wizard-top"><span>PASO 1 DE 3</span><b>Tu proyecto</b></div><DemoForm prospect={p} compact/></div></section>
+      <section id="services" className="service-strip">{p.services.map((x,i)=><div key={x} data-reveal><b>0{i+1}</b><span>{x}</span><i>→</i></div>)}</section>
+      <section id="cases" className="section"><header className="section-head" data-reveal><p>PRIMERO INTENCIÓN. DESPUÉS DETALLE.</p><h2>Tres proyectos, tres puertas de entrada.</h2></header><R3Cases p={p}/></section>
       <section className="r3-proof" data-reveal><h2>Tres razones para no perder el lead</h2><div>{["CTA visible siempre","Solicitud que filtra proyecto","Contacto directo desde móvil"].map((x,i)=><article key={x}><strong>{i+1}</strong><p>{x}</p></article>)}</div></section>
       <Footer p={p}/>
     </main>
