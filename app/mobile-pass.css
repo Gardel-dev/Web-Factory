@@ -617,7 +617,11 @@
     border-radius:15px;
   }
   .c3-refresh .c3-form-shell .field-grid{
+    grid-template-columns:1fr!important;
     gap:14px;
+  }
+  .c3-refresh .c3-form-shell .field-grid .wide{
+    grid-column:auto;
   }
   .c3-refresh .c3-form-shell .field-grid label span{
     font-size:11px;
