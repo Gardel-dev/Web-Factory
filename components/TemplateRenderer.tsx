@@ -144,7 +144,23 @@ function R1({ p }: { p: Prospect }) {
         <header className="section-head" data-reveal><p>UNA SELECCIÓN, NO UN CATÁLOGO</p><h2>El trabajo tiene que hablar antes que la empresa.</h2></header>
         <R1Cases p={p}/>
       </section>
-      <section className="r1-manifesto" data-reveal><p>DISEÑAMOS · COORDINAMOS · EJECUTAMOS</p><h2>Menos ruido. Más criterio en cada decisión.</h2><div>{p.services.map((x,i)=><span key={x}>0{i+1} — {x}</span>)}</div></section>
+      <section className="r1-service-atlas">
+        <div className="r1-service-intro" data-reveal>
+          <p>DISEÑAMOS · COORDINAMOS · EJECUTAMOS</p>
+          <h2>Menos catálogo. Más dirección en cada decisión.</h2>
+          <span>Una reforma se entiende mejor cuando cada servicio ocupa su lugar dentro del proyecto completo.</span>
+        </div>
+        <div className="r1-service-list">
+          {p.services.map((x,i)=>(
+            <article key={x} data-reveal>
+              <span>0{i+1}</span>
+              <h3>{x}</h3>
+              <p>{i===0?"Visión global, decisiones conectadas y una ejecución coherente.":i===1?"Distribución, funcionalidad y materiales pensados para el uso diario.":i===2?"Precisión en espacios pequeños donde cada detalle pesa.":"Estética, luz y proporción para que el conjunto se sienta terminado."}</p>
+              <b>↗</b>
+            </article>
+          ))}
+        </div>
+      </section>
       <section id="contact" className="section split-contact"><div data-reveal><p className="eyebrow">EMPECEMOS POR EL ESPACIO</p><h2>Cuéntanos qué quieres cambiar.</h2><p>Una primera conversación sirve para entender el proyecto, no para venderte una solución prefabricada.</p></div><div data-reveal><DemoForm prospect={p}/></div></section>
       <Footer p={p}/>
     </main>
@@ -159,7 +175,22 @@ function R2({ p }: { p: Prospect }) {
         <div data-reveal><p className="eyebrow">{p.eyebrow}</p><h1>{p.hero}<em>{p.heroAccent}</em></h1><p className="lede">{p.subhero}</p><div className="actions"><a className="primary" href="#contact">{p.primaryCta}</a><a href={"tel:" + p.phoneHref}>Llamar · {p.phone}</a></div><Trust p={p}/></div>
         <aside data-reveal><strong>Antes de firmar una obra deberías tener claro:</strong>{["qué incluye el presupuesto","quién coordina","cómo se organiza por fases","qué ocurre si cambia el alcance"].map((x,i)=><div className="check" key={x}><span>0{i+1}</span>{x}</div>)}</aside>
       </section>
-      <section id="process" className="section"><header className="section-head" data-reveal><p>CONTROL DE PRINCIPIO A FIN</p><h2>Un proceso visible reduce incertidumbre.</h2></header><div className="process-grid">{["Briefing","Visita","Propuesta","Plan de obra","Ejecución","Entrega"].map((x,i)=><article key={x} data-reveal><span>{String(i+1).padStart(2,"0")}</span><h3>{x}</h3><p>{i===0?"Necesidades, m², timing y prioridades.":i===2?"Alcance y partidas explicadas.":i===4?"Seguimiento y coordinación.":"Siguiente paso definido."}</p></article>)}</div></section>
+      <section id="process" className="section r2-process-section">
+        <header className="section-head" data-reveal><p>CONTROL DE PRINCIPIO A FIN</p><h2>Un proceso visible reduce incertidumbre.</h2></header>
+        <div className="r2-process-path">
+          <div className="r2-process-line" aria-hidden="true" />
+          {["Briefing","Visita","Propuesta","Plan de obra","Ejecución","Entrega"].map((x,i)=>(
+            <article key={x} data-reveal>
+              <div className="r2-process-node">{String(i+1).padStart(2,"0")}</div>
+              <div className="r2-process-copy">
+                <span>{i===0?"ENTENDER":i===1?"MEDIR":i===2?"DEFINIR":i===3?"ORDENAR":i===4?"EJECUTAR":"CERRAR"}</span>
+                <h3>{x}</h3>
+                <p>{i===0?"Necesidades, m², timing y prioridades.":i===1?"Contexto real antes de comprometer alcance.":i===2?"Partidas, límites y decisiones explicadas.":i===3?"Secuencia, responsables y puntos de control.":i===4?"Seguimiento, coordinación y cambios trazables.":"Repaso, cierre y entrega sin cabos sueltos."}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="dark-band"><div data-reveal><p className="eyebrow">PRUEBA, NO ADJETIVOS</p><h2>La experiencia se demuestra proyecto a proyecto.</h2></div><R2Cases p={p}/></section>
       <section id="contact" className="section split-contact"><div data-reveal><p className="eyebrow">SOLICITUD CUALIFICADA</p><h2>Que la primera llamada empiece con contexto.</h2><p>El formulario recoge la información que normalmente habría que preguntar después.</p></div><div data-reveal><DemoForm prospect={p}/></div></section>
       <Footer p={p}/>
@@ -181,7 +212,23 @@ function R3({ p }: { p: Prospect }) {
         <a className="nav-cta" href={"tel:" + p.phoneHref}>☎ {p.phone}</a>
       </nav>
       <section className="r3-hero"><div data-reveal><div className="status-dot">● PRESUPUESTOS ABIERTOS</div><h1>{p.hero}<br/><mark>{p.heroAccent}</mark></h1><p>{p.subhero}</p><div className="metric-row"><b>{p.rating}</b><span>{p.reviews}</span><span>Sin compromiso</span></div></div><div id="quote" className="wizard-shell" data-reveal><div className="wizard-top"><span>PASO 1 DE 3</span><b>Tu proyecto</b></div><DemoForm prospect={p} compact/></div></section>
-      <section id="services" className="service-strip">{p.services.map((x,i)=><div key={x} data-reveal><b>0{i+1}</b><span>{x}</span><i>→</i></div>)}</section>
+      <section id="services" className="r3-service-map">
+        <div className="r3-service-lead" data-reveal>
+          <span>ELIGE TU PUNTO DE PARTIDA</span>
+          <h2>No todas las reformas empiezan igual.</h2>
+          <p>La web identifica la intención primero y pide detalle después.</p>
+        </div>
+        <div className="r3-service-cluster">
+          {p.services.map((x,i)=>(
+            <a href="#quote" key={x} className={"r3-service-card s"+(i+1)} data-reveal>
+              <span>0{i+1}</span>
+              <h3>{x}</h3>
+              <p>{i===0?"Proyecto completo y mayor nivel de contexto.":i===1?"Necesidad concreta, rápida de explicar.":i===2?"Decisiones funcionales, acabados y medidas.":"Intervención ligera con respuesta especialmente rápida."}</p>
+              <b>↗</b>
+            </a>
+          ))}
+        </div>
+      </section>
       <section id="cases" className="section"><header className="section-head" data-reveal><p>PRIMERO INTENCIÓN. DESPUÉS DETALLE.</p><h2>Tres proyectos, tres puertas de entrada.</h2></header><R3Cases p={p}/></section>
       <section className="r3-proof" data-reveal><h2>Tres razones para no perder el lead</h2><div>{["CTA visible siempre","Solicitud que filtra proyecto","Contacto directo desde móvil"].map((x,i)=><article key={x}><strong>{i+1}</strong><p>{x}</p></article>)}</div></section>
       <Footer p={p}/>
@@ -195,7 +242,22 @@ function C1({ p }: { p: Prospect }) {
       <nav data-reveal><b>{p.shortName}</b><div><a href="#how">Cómo funciona</a><a className="nav-cta" href="#study">Preestudio</a></div></nav>
       <section className="c1-hero"><div data-reveal><p className="eyebrow">{p.eyebrow}</p><h1>{p.hero}</h1><p className="display-accent">{p.heroAccent}</p><p className="lede">{p.subhero}</p><div className="actions"><a className="primary" href="#study">{p.primaryCta}</a><a href={"tel:" + p.phoneHref}>{p.phone}</a></div></div><div className="energy-orbit" data-reveal><div className="house">⌂<span>VIVIENDA</span></div><i className="orbit o1"/><i className="orbit o2"/><b>PREESTUDIO</b></div></section>
       <Trust p={p}/>
-      <section id="how" className="section"><header className="section-head" data-reveal><p>DECIDIR CON DATOS</p><h2>La pregunta no es “¿qué máquina compro?”.</h2></header><div className="c1-cards">{["Superficie + aislamiento","Sistema actual","Emisores","Uso + prioridades"].map((x,i)=><article key={x} data-reveal><span>0{i+1}</span><h3>{x}</h3><p>Información mínima para orientar el siguiente paso sin prometer ahorros genéricos.</p></article>)}</div></section>
+      <section id="how" className="section">
+        <header className="section-head" data-reveal><p>DECIDIR CON DATOS</p><h2>La pregunta no es “¿qué máquina compro?”.</h2></header>
+        <div className="c1-diagnostic-path">
+          <div className="c1-path-curve" aria-hidden="true" />
+          {["Superficie + aislamiento","Sistema actual","Emisores","Uso + prioridades"].map((x,i)=>(
+            <article key={x} data-reveal>
+              <div className="c1-diagnostic-node"><span>0{i+1}</span></div>
+              <div>
+                <small>{i===0?"ENVOLVENTE":i===1?"PUNTO DE PARTIDA":i===2?"DISTRIBUCIÓN": "HÁBITOS"}</small>
+                <h3>{x}</h3>
+                <p>{i===0?"Metros, orientación y aislamiento condicionan cualquier cálculo serio.":i===1?"Saber qué existe evita recomendar por inercia.":i===2?"Suelo radiante, radiadores o fan coils cambian la solución.":"Confort, horarios y prioridades terminan de definir el sistema."}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="soft-band"><C1Cases p={p}/></section>
       <section id="study" className="section split-contact"><div data-reveal><p className="eyebrow">PREESTUDIO</p><h2>Primero vemos si tiene sentido para tu caso.</h2><p>Una captación consultiva protege al instalador de leads pobres y al cliente de recomendaciones apresuradas.</p></div><div data-reveal><DemoForm prospect={p}/></div></section>
       <Footer p={p}/>
@@ -208,7 +270,15 @@ function C2({ p }: { p: Prospect }) {
     <main className="demo t-c2">
       <header className="c2-top" data-reveal><b>{p.shortName} <span>CLIMA</span></b><a href={"tel:" + p.phoneHref}>Llamar {p.phone}</a></header>
       <section className="c2-hero"><div data-reveal><span className="availability">● ATENCIÓN DIRECTA</span><h1>{p.hero}<br/><strong>{p.heroAccent}</strong></h1><p>{p.subhero}</p><div className="quick-services">{p.services.map((x,i)=><a key={x} href="#quote"><span>{["❄","❄❄","▤","↻"][i]}</span><b>{x}</b><i>→</i></a>)}</div></div><aside id="quote" data-reveal><h2>Presupuesto rápido</h2><p>Lo mínimo para poder orientarte.</p><DemoForm prospect={p} compact/></aside></section>
-      <section className="c2-trust" data-reveal><div><b>{p.rating}</b><span>{p.reviews}</span></div>{p.trust.map(x=><div key={x}>✓ {x}</div>)}</section>
+      <section className="c2-proof-cloud" data-reveal>
+        <div className="c2-rating-orb"><strong>{p.rating}</strong><span>{p.reviews}</span></div>
+        <div className="c2-proof-chip chip-a"><i>✓</i><span>{p.trust[0]}</span></div>
+        <div className="c2-proof-chip chip-b"><i>✓</i><span>{p.trust[1]}</span></div>
+        <div className="c2-proof-chip chip-c"><i>✓</i><span>{p.trust[2]}</span></div>
+        <div className="c2-proof-line l1" aria-hidden="true" />
+        <div className="c2-proof-line l2" aria-hidden="true" />
+        <div className="c2-proof-line l3" aria-hidden="true" />
+      </section>
       <section className="section"><header className="section-head" data-reveal><p>INSTALACIONES EN MOVIMIENTO</p><h2>Una oferta rápida también puede sentirse cuidada.</h2></header><C2Cases p={p}/></section>
       <Footer p={p}/>
     </main>
