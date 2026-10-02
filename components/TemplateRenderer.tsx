@@ -382,7 +382,7 @@ function C3({ p }: { p: Prospect }) {
             <p>La cartera publicada por Aire y Clima incluye organizaciones privadas y administraciones de perfiles muy distintos.</p>
           </div>
           <div className="c3-client-cloud">
-            {clients.map((client, i) => <span key={client} style={{"--i": i} as React.CSSProperties}>{client}</span>)}
+            {clients.map((client) => <span key={client}>{client}</span>)}
           </div>
         </div>
 
