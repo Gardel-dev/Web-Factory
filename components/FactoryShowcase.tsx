@@ -10,12 +10,12 @@ const nicheMeta: Record<Niche, { label: string; eyebrow: string; description: st
   reformas: {
     label: "Reformas",
     eyebrow: "VIVIENDA · INTERIORISMO · OBRA",
-    description: "Tres maneras de vender confianza, deseo o velocidad según el tipo de empresa y el ticket.",
+    description: "Tres sistemas para vender deseo, confianza o velocidad según el tipo de empresa y su ticket.",
   },
   climatizacion: {
     label: "Climatización",
     eyebrow: "AEROTERMIA · AIRE · HVAC",
-    description: "Tres sistemas para convertir una necesidad técnica en una decisión mucho más fácil de tomar.",
+    description: "Tres sistemas para convertir una necesidad técnica en una decisión más simple y mejor cualificada.",
   },
 };
 
@@ -36,7 +36,7 @@ export function FactoryShowcase() {
   return (
     <main
       id="top"
-      className="showcase-home"
+      className="showcase-home tech-home"
       onPointerMove={(event) => {
         const node = event.currentTarget;
         node.style.setProperty("--home-x", event.clientX + "px");
@@ -49,22 +49,42 @@ export function FactoryShowcase() {
 
       <nav className="showcase-nav" data-reveal>
         <Link href="/" className="showcase-brand">
-          <span>WF</span>
-          <div><b>WEB FACTORY</b><small>Conversion systems</small></div>
+          <span>{"</>"}</span>
+          <div>
+            <b>WEB FACTORY</b>
+            <small>built by developer · conversion systems</small>
+          </div>
         </Link>
-        <div className="showcase-nav-note">6 conceptos · 2 sectores · 1 objetivo</div>
+        <div className="tech-status">
+          <i />
+          <span>system_online</span>
+          <b>v0.2</b>
+        </div>
       </nav>
 
       <section className="showcase-hero">
-        <p className="showcase-kicker" data-reveal>SISTEMAS DIGITALES PARA NEGOCIOS QUE YA SABEN HACER SU TRABAJO</p>
+        <div className="tech-path" data-reveal>
+          <span>~/web-factory</span><i>/</i><b>production</b>
+        </div>
+        <p className="showcase-kicker" data-reveal>DISEÑO · CÓDIGO · CONVERSIÓN</p>
         <h1 data-reveal>
-          Una web no debería
-          <span>parecer una plantilla.</span>
+          Webs pensadas
+          <span>como software.</span>
         </h1>
         <p className="showcase-sub" data-reveal>
-          Debería hacer evidente por qué elegirte. Hemos diseñado seis direcciones comerciales distintas
-          para demostrarlo.
+          No parto de una plantilla y cambio colores. Diseño sistemas reutilizables, los adapto al negocio
+          y los convierto en experiencias que parecen hechas desde cero.
         </p>
+
+        <div className="tech-stack" data-reveal aria-label="Arquitectura del proyecto">
+          <span><i>01</i> research</span>
+          <b>→</b>
+          <span><i>02</i> strategy</span>
+          <b>→</b>
+          <span><i>03</i> code</span>
+          <b>→</b>
+          <span><i>04</i> deploy</span>
+        </div>
       </section>
 
       <section className="niche-showcase" aria-label="Selecciona un sector">
@@ -101,6 +121,11 @@ export function FactoryShowcase() {
                 <small>{templateNames[p.template]}</small>
               </header>
               <div className="fan-visual" aria-hidden="true">
+                <div className="fan-code">
+                  <span>template</span>
+                  <b>:</b>
+                  <strong>"{p.template}"</strong>
+                </div>
                 <i className="fan-orb o1" />
                 <i className="fan-orb o2" />
                 <b>{p.template}</b>
@@ -108,25 +133,40 @@ export function FactoryShowcase() {
               <div className="fan-body">
                 <p>{p.eyebrow}</p>
                 <h2>{p.hero}</h2>
-                <div><span>{p.city}</span><strong>Explorar concepto ↗</strong></div>
+                <div><span>{p.city}</span><strong>open_demo() ↗</strong></div>
               </div>
             </Link>
           ))}
         </div>
 
-        <div className="fan-instruction">Mueve el cursor · abre un concepto · compara enfoques</div>
+        <div className="fan-instruction">pointer_move() · select_template() · inspect_demo()</div>
       </section>
 
       <section className="showcase-proof" data-reveal>
-        <article><strong>06</strong><span>sistemas con identidad propia</span></article>
-        <article><strong>01</strong><span>arquitectura modular detrás</span></article>
-        <article><strong>∞</strong><span>variantes a partir de datos reales</span></article>
+        <article><strong>06</strong><span>interfaces con lógica comercial distinta</span></article>
+        <article><strong>01</strong><span>arquitectura modular mantenible</span></article>
+        <article><strong>0</strong><span>dependencias de animación innecesarias</span></article>
+      </section>
+
+      <section className="tech-console" data-reveal>
+        <header><div><i/><i/><i/></div><span>factory.config.ts</span><b>READY</b></header>
+        <pre><code><span className="c-key">const</span> factory = {"{"}
+{"
+"}  niche: <span className="c-string">"{niche}"</span>,
+{"
+"}  strategy: <span className="c-string">"conversion-first"</span>,
+{"
+"}  templates: <span className="c-number">3</span>,
+{"
+"}  deploy: <span className="c-bool">true</span>
+{"
+"}{"}"}</code></pre>
       </section>
 
       <section className="showcase-closing" data-reveal>
-        <p>La tecnología es la parte fácil.</p>
-        <h2>Lo difícil es diseñar una web que el cliente <em>quiera</em> comprar.</h2>
-        <a href="#top">Volver arriba ↑</a>
+        <p>// BUILDING DIGITAL SYSTEMS, NOT GENERIC WEBS</p>
+        <h2>Diseño que entra por los ojos.<br/><em>Arquitectura que aguanta detrás.</em></h2>
+        <a href="#top">return_to_top() ↑</a>
       </section>
     </main>
   );
