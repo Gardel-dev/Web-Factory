@@ -1,5 +1,6 @@
 import type { Prospect } from "@/lib/types";
 import { DemoForm } from "./DemoForm";
+import { C2Conveyor } from "./C2Conveyor";
 
 function Trust({ p }: { p: Prospect }) {
   return (
@@ -93,26 +94,7 @@ function C1Cases({ p }: { p: Prospect }) {
 }
 
 function C2Cases({ p }: { p: Prospect }) {
-  const items = [...p.caseTitles, ...p.caseTitles];
-  return (
-    <div className="c2-conveyor-wrap" data-reveal>
-      <div className="c2-conveyor">
-        {items.map((title, i) => {
-          const original = i % p.caseTitles.length;
-          return (
-            <article className="c2-ticket" key={title + i} aria-hidden={i >= p.caseTitles.length}>
-              <header><span>INSTALACIÓN 0{original + 1}</span><b>● DISPONIBLE</b></header>
-              <div>
-                <h3>{title}</h3>
-                <p>{original === 0 ? "Necesidad clara, respuesta directa y pocos pasos." : original === 1 ? "Servicio local con CTA visible desde cualquier punto." : "El móvil como canal principal, no como versión reducida."}</p>
-              </div>
-              <footer><span>{p.zone}</span><b>Consultar →</b></footer>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  );
+  return <C2Conveyor titles={p.caseTitles} zone={p.zone} />;
 }
 
 function C3Cases({ p }: { p: Prospect }) {
