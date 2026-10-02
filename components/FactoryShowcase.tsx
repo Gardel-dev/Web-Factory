@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { prospects } from "@/lib/data";
 
 type Niche = "reformas" | "climatizacion";
@@ -30,8 +30,30 @@ const templateNames = {
 
 export function FactoryShowcase() {
   const [niche, setNiche] = useState<Niche>("reformas");
+  const [activeCard, setActiveCard] = useState(0);
+  const fanRef = useRef<HTMLDivElement>(null);
+
   const cards = useMemo(() => prospects.filter((p) => p.sector === niche), [niche]);
   const meta = nicheMeta[niche];
+
+  useEffect(() => {
+    const saved = window.sessionStorage.getItem("web-factory:niche");
+    if (saved === "reformas" || saved === "climatizacion") {
+      setNiche(saved);
+    }
+  }, []);
+
+  useEffect(() => {
+    setActiveCard(0);
+    if (window.matchMedia("(max-width: 650px)").matches) {
+      requestAnimationFrame(() => fanRef.current?.scrollTo({ left: 0, behavior: "instant" }));
+    }
+  }, [niche]);
+
+  const selectNiche = (next: Niche) => {
+    setNiche(next);
+    window.sessionStorage.setItem("web-factory:niche", next);
+  };
 
   return (
     <main
@@ -93,7 +115,7 @@ export function FactoryShowcase() {
             <button
               key={id}
               className={niche === id ? "active" : ""}
-              onClick={() => setNiche(id)}
+              onClick={() => selectNiche(id)}
               aria-pressed={niche === id}
             >
               {nicheMeta[id].label}
@@ -107,13 +129,40 @@ export function FactoryShowcase() {
           <p>{meta.description}</p>
         </div>
 
-        <div className="fan-stage" key={"fan-" + niche}>
+        <div
+          className="fan-stage"
+          key={"fan-" + niche}
+          ref={fanRef}
+          onScroll={(event) => {
+            if (!window.matchMedia("(max-width: 650px)").matches) return;
+            const stage = event.currentTarget;
+            const center = stage.getBoundingClientRect().left + stage.clientWidth / 2;
+            let closest = 0;
+            let closestDistance = Number.POSITIVE_INFINITY;
+
+            Array.from(stage.querySelectorAll<HTMLElement>(".fan-card")).forEach((card, index) => {
+              const rect = card.getBoundingClientRect();
+              const distance = Math.abs(rect.left + rect.width / 2 - center);
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closest = index;
+              }
+            });
+
+            setActiveCard(closest);
+          }}
+        >
           {cards.map((p, index) => (
             <Link
               href={"/demo/" + p.slug}
               key={p.slug}
-              className={"fan-card fan-card-" + (index + 1) + " fan-" + p.template.toLowerCase()}
+              className={
+                "fan-card fan-card-" + (index + 1) +
+                " fan-" + p.template.toLowerCase() +
+                (index === activeCard ? " is-active" : index < activeCard ? " is-before" : " is-after")
+              }
               data-tilt
+              data-reveal
             >
               <div className="fan-shine" />
               <header>
@@ -139,13 +188,22 @@ export function FactoryShowcase() {
           ))}
         </div>
 
-        <div className="fan-instruction">pointer_move() · select_template() · inspect_demo()</div>
+        <div className="fan-instruction">
+          <span className="desktop-instruction">pointer_move() · select_template() · inspect_demo()</span>
+          <span className="mobile-instruction">desliza · centra · toca para abrir</span>
+        </div>
       </section>
 
-      <section className="showcase-proof" data-reveal>
-        <article><strong>06</strong><span>interfaces con lógica comercial distinta</span></article>
-        <article><strong>01</strong><span>arquitectura modular mantenible</span></article>
-        <article><strong>0</strong><span>dependencias de animación innecesarias</span></article>
+      <section className="showcase-proof">
+        <article data-reveal>
+          <strong><span className="desktop-count">06</span><span className="mobile-count">6</span></strong>
+          <span>interfaces con lógica comercial distinta</span>
+        </article>
+        <article data-reveal>
+          <strong><span className="desktop-count">01</span><span className="mobile-count">1</span></strong>
+          <span>arquitectura modular mantenible</span>
+        </article>
+        <article data-reveal><strong>0</strong><span>dependencias de animación innecesarias</span></article>
       </section>
 
       <section className="showcase-closing" data-reveal>
