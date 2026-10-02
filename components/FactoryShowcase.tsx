@@ -150,17 +150,14 @@ export function FactoryShowcase() {
 
       <section className="tech-console" data-reveal>
         <header><div><i/><i/><i/></div><span>factory.config.ts</span><b>READY</b></header>
-        <pre><code><span className="c-key">const</span> factory = {"{"}
-{"
-"}  niche: <span className="c-string">"{niche}"</span>,
-{"
-"}  strategy: <span className="c-string">"conversion-first"</span>,
-{"
-"}  templates: <span className="c-number">3</span>,
-{"
-"}  deploy: <span className="c-bool">true</span>
-{"
-"}{"}"}</code></pre>
+        <pre><code>
+          <span className="c-key">const</span> factory = {"{"}<br/>
+          {"  "}niche: <span className="c-string">"{niche}"</span>,<br/>
+          {"  "}strategy: <span className="c-string">"conversion-first"</span>,<br/>
+          {"  "}templates: <span className="c-number">3</span>,<br/>
+          {"  "}deploy: <span className="c-bool">true</span><br/>
+          {"}"}
+        </code></pre>
       </section>
 
       <section className="showcase-closing" data-reveal>
