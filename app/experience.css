@@ -166,7 +166,7 @@
 .c1-orbit-core::before,.c1-orbit-core::after{content:"";position:absolute;border:1px dashed #668d58;border-radius:50%;animation:orbitSpin 24s linear infinite}.c1-orbit-core::before{inset:-90px}.c1-orbit-core::after{inset:-175px;animation-direction:reverse;animation-duration:34s}
 @keyframes orbitSpin{to{transform:rotate(360deg)}}.c1-orbit-core strong{font:34px Georgia,serif}.c1-orbit-core span{font-size:10px;letter-spacing:.14em;opacity:.7}
 .c1-orbit-card{width:270px;position:absolute;padding:22px;border-radius:22px;background:#fff;border:1px solid #d2dccb;box-shadow:0 18px 50px rgba(34,62,48,.10);transition:transform .4s var(--ease-out),box-shadow .4s;z-index:4}
-.c1-orbit-card:nth-of-type(2){left:3%;top:16%}.c1-orbit-card:nth-of-type(3){right:1%;top:24%}.c1-orbit-card:nth-of-type(4){left:16%;bottom:5%}
+.c1-orbit-card:nth-of-type(1){left:3%;top:16%}.c1-orbit-card:nth-of-type(2){right:1%;top:24%}.c1-orbit-card:nth-of-type(3){left:16%;bottom:5%}
 .c1-orbit-card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(34,62,48,.17)}.c1-orbit-card>span{font-size:10px;color:#668d58;font-weight:900}.c1-orbit-card h3{font:26px Georgia,serif;margin:10px 0}.c1-orbit-card p{font-size:13px;line-height:1.55;opacity:.62}
 
 /* C2 — conveyor / service tickets */
@@ -187,7 +187,7 @@
   .fan-stage{min-height:auto;align-items:stretch;gap:12px;margin-top:30px}.fan-card{height:440px;width:33%;padding:15px}.fan-card-1,.fan-card-2,.fan-card-3{--fan-rotate:0deg;--fan-y:0px}.fan-body h2{font-size:21px}.fan-body>div strong{display:none}
   .r1-triptych{grid-template-columns:1fr 1fr}.r1-story:nth-child(3){grid-column:1/-1}.r1-story:nth-child(1),.r1-story:nth-child(2),.r1-story:nth-child(3){transform:none;min-height:430px}.r1-story-visual,.r1-story:nth-child(2) .r1-story-visual{height:290px}
   .r2-case-row{grid-template-columns:55px 1fr 44px}.r2-case-row p{display:none}
-  .c1-orbit-showcase{min-height:720px}.c1-orbit-card:nth-of-type(2){left:0}.c1-orbit-card:nth-of-type(3){right:0}.c1-orbit-card:nth-of-type(4){left:8%}
+  .c1-orbit-showcase{min-height:720px}.c1-orbit-card:nth-of-type(1){left:0}.c1-orbit-card:nth-of-type(2){right:0}.c1-orbit-card:nth-of-type(3){left:8%}
 }
 @media(max-width:650px){
   .showcase-nav{padding:22px 18px 0}.showcase-nav-note{display:none}.showcase-hero{padding:90px 18px 30px}.showcase-hero h1{font-size:54px}.showcase-sub{font-size:16px}
@@ -197,7 +197,7 @@
   .r1-triptych{grid-template-columns:1fr}.r1-story:nth-child(3){grid-column:auto}
   .r2-case-row{grid-template-columns:38px 1fr 30px;gap:10px}.r2-case-row h3{font-size:23px}
   .r3-snap-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 8px 20px;scrollbar-width:none}.r3-snap-track::-webkit-scrollbar{display:none}.r3-snap-card{min-width:84vw;scroll-snap-align:center}.r3-snap-card:nth-child(2){transform:none}.r3-snap-card:hover{transform:translateY(-5px)}
-  .c1-orbit-showcase{display:flex;flex-direction:column;gap:12px;min-height:auto}.c1-orbit-core{margin:20px 0 30px}.c1-orbit-core::before{inset:-35px}.c1-orbit-core::after{display:none}.c1-orbit-card,.c1-orbit-card:nth-of-type(2),.c1-orbit-card:nth-of-type(3),.c1-orbit-card:nth-of-type(4){position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%}
+  .c1-orbit-showcase{display:flex;flex-direction:column;gap:12px;min-height:auto}.c1-orbit-core{margin:20px 0 30px}.c1-orbit-core::before{inset:-35px}.c1-orbit-core::after{display:none}.c1-orbit-card,.c1-orbit-card:nth-of-type(1),.c1-orbit-card:nth-of-type(2),.c1-orbit-card:nth-of-type(3){position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%}
   .c2-conveyor-wrap{margin-left:-18px;margin-right:-18px}.c2-conveyor-wrap::before,.c2-conveyor-wrap::after{width:38px}.c2-ticket{width:290px}
   .c3-dossier{grid-template-columns:1fr;grid-template-rows:auto}.c3-dossier-card:first-child{grid-row:auto;min-height:370px}.c3-dossier-card{min-height:250px}
 }
@@ -205,3 +205,12 @@
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .motion-ready [data-reveal]{opacity:1;transform:none;filter:none}.fan-card{transform:none!important}.c2-conveyor{transform:none!important}
 }
+
+/* tactile finishing */
+.showcase-home a:focus-visible,.showcase-home button:focus-visible,.demo a:focus-visible,.demo button:focus-visible,.demo input:focus-visible,.demo select:focus-visible{outline:3px solid #72b7ff;outline-offset:4px}
+.lead-form input,.lead-form select{transition:border-color .22s,box-shadow .22s,transform .22s}.lead-form input:focus,.lead-form select:focus{border-color:#5ca7df;box-shadow:0 0 0 4px rgba(92,167,223,.12);outline:0}
+.ticker span{display:inline-block;min-width:max-content;animation:tickerMove 18s linear infinite}.ticker span::after{content:" · REFORMA · PRESUPUESTO · CÓRDOBA · REFORMA · PRESUPUESTO · CÓRDOBA";padding-left:4rem}
+@keyframes tickerMove{to{transform:translateX(-50%)}}
+.process-grid article{transition:transform .3s var(--ease-out),box-shadow .3s}.process-grid article:hover{transform:translateY(-5px);box-shadow:0 16px 35px rgba(23,32,51,.08);z-index:2}
+.quick-services a{transition:transform .25s var(--ease-out),box-shadow .25s,border-color .25s}.quick-services a:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(21,101,232,.10)}
+.matrix article{transition:background .35s,transform .35s var(--ease-out)}.matrix article:hover{background:#12263a;transform:translateY(-3px)}
