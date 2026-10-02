@@ -63,11 +63,11 @@ export function MotionEnhancer() {
       const tiltNodes: HTMLElement[] = [];
 
       if (element.matches?.("[data-reveal]")) revealNodes.push(element);
-      revealNodes.push(...Array.from(element.querySelectorAll?.("[data-reveal]") ?? []));
+      revealNodes.push(...Array.from(element.querySelectorAll("[data-reveal]")));
 
       if (element instanceof HTMLElement && element.matches("[data-tilt]")) tiltNodes.push(element);
       tiltNodes.push(
-        ...Array.from(element.querySelectorAll?.<HTMLElement>("[data-tilt]") ?? [])
+        ...Array.from(element.querySelectorAll<HTMLElement>("[data-tilt]"))
       );
 
       revealNodes.forEach((node) => {
