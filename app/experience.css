@@ -580,44 +580,6 @@
   color:#58738a;
 }
 
-.tech-console{
-  max-width:860px;
-  margin:0 auto 120px;
-  overflow:hidden;
-  border:1px solid #bdd6e6;
-  border-radius:16px;
-  background:#0b1b2a;
-  box-shadow:0 35px 80px rgba(33,91,128,.16);
-}
-.tech-console header{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  padding:11px 14px;
-  background:#f2f8fc;
-  border-bottom:1px solid #bfd7e6;
-  color:#667e91;
-  font:700 10px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-}
-.tech-console header>div{display:flex;gap:6px}
-.tech-console header i{
-  width:9px;height:9px;border-radius:50%;background:#ff6a69;
-}
-.tech-console header i:nth-child(2){background:#ffc84a}
-.tech-console header i:nth-child(3){background:#33c789}
-.tech-console header>span{justify-self:center}
-.tech-console header>b{justify-self:end;color:#15966e}
-.tech-console pre{
-  margin:0;
-  padding:30px 34px 34px;
-  overflow:auto;
-  color:#d4e4ef;
-  font:500 14px/1.9 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-}
-.tech-console .c-key{color:#67c8ff}
-.tech-console .c-string{color:#7ee0c2}
-.tech-console .c-number{color:#f7ca6a}
-.tech-console .c-bool{color:#bfa6ff}
 
 .tech-home .showcase-closing>p{
   color:#1680b8;
@@ -647,6 +609,4 @@
   .tech-stack{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .tech-stack>b{display:none}
   .tech-stack span{justify-content:center;padding:7px}
-  .tech-console{margin-left:14px;margin-right:14px}
-  .tech-console pre{font-size:12px;padding:24px 20px}
 }
