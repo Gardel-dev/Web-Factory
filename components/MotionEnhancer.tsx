@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 export function MotionEnhancer() {
   useEffect(() => {
+    document.documentElement.classList.add("motion-ready");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const revealNodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
 
@@ -53,6 +54,7 @@ export function MotionEnhancer() {
 
     return () => {
       observer.disconnect();
+      document.documentElement.classList.remove("motion-ready");
       cleanups.forEach((cleanup) => cleanup());
     };
   }, []);
