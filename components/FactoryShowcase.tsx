@@ -162,7 +162,6 @@ export function FactoryShowcase() {
                 (index === activeCard ? " is-active" : index < activeCard ? " is-before" : " is-after")
               }
               data-tilt
-              data-reveal
             >
               <div className="fan-shine" />
               <header>
