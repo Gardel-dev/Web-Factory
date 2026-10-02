@@ -46,7 +46,7 @@ export function FactoryShowcase() {
   useEffect(() => {
     setActiveCard(0);
     if (window.matchMedia("(max-width: 650px)").matches) {
-      requestAnimationFrame(() => fanRef.current?.scrollTo({ left: 0, behavior: "instant" }));
+      requestAnimationFrame(() => fanRef.current?.scrollTo({ left: 0, behavior: "auto" }));
     }
   }, [niche]);
 
