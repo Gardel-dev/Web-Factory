@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
+import "./experience.css";
+import { MotionEnhancer } from "@/components/MotionEnhancer";
 
 export const metadata: Metadata = {
-  title: "Web Factory — demos de captación",
-  description: "Sistema modular de demos comerciales para reformas y climatización.",
+  title: "Web Factory — sistemas digitales de captación",
+  description: "Seis conceptos comerciales para empresas de reformas y climatización.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <MotionEnhancer />
+        {children}
+      </body>
     </html>
   );
 }
