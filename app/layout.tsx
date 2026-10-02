@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import "./experience.css";
+import "./c3-refresh.css";
 import { MotionEnhancer } from "@/components/MotionEnhancer";
 
 export const metadata: Metadata = {
